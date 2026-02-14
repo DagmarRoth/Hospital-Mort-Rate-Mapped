@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The South is Suffering: Hospital Mortality Across America's Bible Belt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        /* Hero Video Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.6) 0%, rgba(0, 77, 128, 0.5) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(0, 34, 68, 0.95);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 107, 53, 0.2);
+            color: #FF6B35;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 50px;
+        }
+
+        section h2 {
+            color: #003366;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 700;
+            border-bottom: 4px solid #FF6B35;
+            padding-bottom: 15px;
+        }
+
+        section h3 {
+            color: #004d80;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #003366 0%, #004d80 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #FFB84D;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Alert */
+        .alert {
+            background-color: #FFF3E0;
+            border-left: 5px solid #FF6B35;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .alert p {
+            margin: 0;
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            margin: 40px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 900px;
+            border: none;
+            display: block;
+        }
+
+        /* Key Findings */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .finding-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #FF6B35;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .finding-card h4 {
+            color: #003366;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .finding-card p {
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #002244;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        footer strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #FFB84D;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                font-size: 0.9em;
+            }
+
+            .map-container iframe {
+                height: 600px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+
+        /* Text Highlight */
+        .highlight {
+            background-color: #FFE5CC;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Video -->
+    <div class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="12279644_3840_2160_60fps.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>The South is Suffering</h1>
+            <p>Hospital Mortality Across America's Bible Belt</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#map">Interactive Map</a></li>
+            <li><a href="#findings">Key Findings</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>
+                A comprehensive analysis of hospital-wide mortality rates reveals a deeply concerning pattern:
+                America's Bible Belt faces a healthcare crisis that demands immediate national attention.
+            </p>
+            <p>
+                This investigation examines the Hybrid Hospital-Wide All-Cause Risk Standardized Mortality Rate across
+                4,791 hospitals in the United States. The data paints a stark picture of geographic healthcare inequality,
+                with the South—particularly the Bible Belt region—experiencing mortality rates significantly elevated above
+                the national average.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4,791</div>
+                    <div class="stat-label">Hospitals Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,752</div>
+                    <div class="stat-label">ZIP Codes Covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7.8%</div>
+                    <div class="stat-label">Peak Mortality Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.2%</div>
+                    <div class="stat-label">National Average</div>
+                </div>
+            </div>
+
+            <div class="alert">
+                <p>
+                    <strong>Critical Finding:</strong> The highest hospital mortality rates in America are concentrated in the South.
+                    Mississippi, Louisiana, Alabama, Arkansas, and Tennessee consistently rank among the worst-performing states.
+                    Regional variation within these states reveals localized healthcare crises demanding targeted intervention.
+                </p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Map Section -->
+        <section id="map">
+            <h2>Regional Mortality Map</h2>
+            <p>
+                Explore the geographic distribution of hospital mortality rates across America's regions within each state.
+                This interactive choropleth map reveals the granular patterns of healthcare performance, showing which specific
+                regions within Bible Belt states face the greatest challenges.
+            </p>
+            <p>
+                The color gradient ranges from <span class="highlight">yellow (lower mortality)</span> to
+                <span class="highlight">red (higher mortality)</span>. Notice the concentration of red in the South,
+                particularly within Mississippi, Louisiana, Alabama, and Arkansas.
+            </p>
+            <div class="map-container">
+                <iframe src="hospital_mortality_state_regions_map.html"></iframe>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Key Findings Section -->
+        <section id="findings">
+            <h2>Key Findings</h2>
+
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <h4>Bible Belt Concentration</h4>
+                    <p>
+                        Six of the ten counties with the highest hospital mortality rates are located in Mississippi alone.
+                        The Bible Belt region exhibits systemic healthcare performance challenges.
+                    </p>
+                </div>
+                <div class="finding-card">
+                    <h4>State-Level Disparities</h4>
+                    <p>
+                        Mississippi (4.86%), Louisiana (4.53%), and Alabama (4.52%) lead in mortality rates—all significantly
+                        above the national average of 4.22%. These disparities persist across hospital types.
+                    </p>
+                </div>
+                <div class="finding-card">
+                    <h4>Regional Variation</h4>
+                    <p>
+                        Within individual states, certain regions show particularly elevated mortality. Southern counties
+                        within Bible Belt states consistently demonstrate higher mortality than their northern counterparts.
+                    </p>
+                </div>
+                <div class="finding-card">
+                    <h4>Geographic Inequality</h4>
+                    <p>
+                        The geographic concentration of mortality suggests localized systemic issues: resource constraints,
+                        population demographics, infrastructure gaps, or clinical service capacity limitations.
+                    </p>
+                </div>
+                <div class="finding-card">
+                    <h4>Healthcare Access Crisis</h4>
+                    <p>
+                        The data suggests unequal access to quality healthcare across regions. Rural and economically
+                        disadvantaged areas within the Bible Belt face steeper mortality rates.
+                    </p>
+                </div>
+                <div class="finding-card">
+                    <h4>Policy Implications</h4>
+                    <p>
+                        Targeted healthcare interventions are urgently needed. Regional approaches accounting for local
+                        variations may prove more effective than broad state-level policy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Analysis Section -->
+        <section id="analysis">
+            <h2>Detailed Analysis</h2>
+
+            <h3>The Bible Belt Healthcare Crisis</h3>
+            <p>
+                The Bible Belt—traditionally defined as Alabama, Arkansas, Georgia, Kentucky, Louisiana, Mississippi,
+                Missouri, Oklahoma, Tennessee, and parts of Texas—faces a disproportionate healthcare burden. Our analysis
+                reveals that hospital mortality rates in these states exceed national averages by 10-15%.
+            </p>
+
+            <h3>Regional Patterns Within States</h3>
+            <p>
+                The most revealing finding is the significant variation within states. Southern and western regions of
+                Bible Belt states consistently show higher mortality rates than northern regions. This suggests that
+                healthcare resources and quality are unevenly distributed even within state borders.
+            </p>
+
+            <h3>Implications for Public Health</h3>
+            <p>
+                These disparities indicate a complex healthcare crisis rooted in multiple factors: economic inequality,
+                population demographics, healthcare infrastructure investment, clinical staffing, and access barriers.
+                Addressing this crisis requires targeted investment in high-mortality regions, improved healthcare infrastructure,
+                and enhanced clinical training and support.
+            </p>
+
+            <h3>Methodology</h3>
+            <p>
+                This analysis utilizes Centers for Medicare & Medicaid Services (CMS) data on the Hybrid Hospital-Wide
+                All-Cause Risk Standardized Mortality Rate. Data covers 4,791 hospitals across 3,752 ZIP codes and 55
+                states/territories. County-level data was aggregated by state regions (North, South, East, West, Central,
+                and corner regions). Interactive visualizations were created using Plotly for dynamic exploration.
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <strong>The South is Suffering: Hospital Mortality Across America's Bible Belt</strong>
+        <p>Data Source: Centers for Medicare & Medicaid Services (CMS) Complications and Deaths Dataset</p>
+        <p>Analysis Date: February 2026</p>
+        <p>Hybrid Hospital-Wide All-Cause Risk Standardized Mortality Rate</p>
+        <p style="margin-top: 20px; opacity: 0.7;">
+            For more information or questions about this analysis, please contact the research team.
+        </p>
+    </footer>
+</body>
+</html>
