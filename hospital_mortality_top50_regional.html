@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_dead3621b614e55b4394d7e332d54038 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; right: 50px; width: 300px; height: 240px; 
+     background-color: white; border:2px solid grey; z-index:9999; font-size:12px;
+     padding: 10px; font-family: Arial;">
+
+<p style="margin: 0 0 5px 0; font-weight: bold; font-size: 13px;">Top 50 Highest Mortality Rates</p>
+<p style="margin: 0 0 10px 0; font-size: 11px;">Hybrid Hospital-Wide All-Cause Risk Standardized Mortality Rate</p>
+
+<p style="margin: 5px 0 3px 0; font-weight: bold; font-size: 11px;">Mortality Rate Range:</p>
+<div style="margin: 3px 0; padding: 3px 5px; background-color: #FED976; border: 1px solid #999;">Low (within top 50)</div>
+<div style="margin: 3px 0; padding: 3px 5px; background-color: #FC4E2A; border: 1px solid #999;">Medium</div>
+<div style="margin: 3px 0; padding: 3px 5px; background-color: #800026; color: white; border: 1px solid #999;">Highest</div>
+
+<p style="margin: 8px 0 3px 0; font-size: 11px;"><b>Circle size:</b> Reflects number of hospitals</p>
+<p style="margin: 3px 0; font-size: 11px;"><b>Click circles:</b> See ZIP code details</p>
+</div>
+    
+            <div class="folium-map" id="map_dead3621b614e55b4394d7e332d54038" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_dead3621b614e55b4394d7e332d54038 = L.map(
+                "map_dead3621b614e55b4394d7e332d54038",
+                {
+                    center: [33.770787580000004, -44.99790472],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e78e50de863c31254d594366ab03b1fc = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e78e50de863c31254d594366ab03b1fc.addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+            var circle_marker_9c4f72bb02d32da59233350052c3c1dd = L.circleMarker(
+                [35.654522, -88.4028122],
+                {"bubblingMouseEvents": true, "color": "#800026", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_e2ea316a368168a80e5187884a12adc9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e92b90f5259168a982f7823f5dd4e7e8 = $(`<div id="html_e92b90f5259168a982f7823f5dd4e7e8" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 38351</b><br>     <b>Avg Mortality Rate: 7.00%</b><br>     <b>Rank: #1067</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> HENDERSON COUNTY COMMUNITY HOSPITAL     </div>`)[0];
+                popup_e2ea316a368168a80e5187884a12adc9.setContent(html_e92b90f5259168a982f7823f5dd4e7e8);
+            
+        
+
+        circle_marker_9c4f72bb02d32da59233350052c3c1dd.bindPopup(popup_e2ea316a368168a80e5187884a12adc9)
+        ;
+
+        
+    
+    
+            var circle_marker_92cac92d3b7e03da52ca5c45c80e599f = L.circleMarker(
+                [30.8795606, -88.6029387],
+                {"bubblingMouseEvents": true, "color": "#800026", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_cf8739ba9f45f169827d59bfd30ee337 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9ba5954e3114f90d8a33e19189cabe57 = $(`<div id="html_9ba5954e3114f90d8a33e19189cabe57" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 39452</b><br>     <b>Avg Mortality Rate: 7.00%</b><br>     <b>Rank: #1130</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> GEORGE REGIONAL HEALTH SYSTEM     </div>`)[0];
+                popup_cf8739ba9f45f169827d59bfd30ee337.setContent(html_9ba5954e3114f90d8a33e19189cabe57);
+            
+        
+
+        circle_marker_92cac92d3b7e03da52ca5c45c80e599f.bindPopup(popup_cf8739ba9f45f169827d59bfd30ee337)
+        ;
+
+        
+    
+    
+            var circle_marker_3fa3ad01295455aa95f92ee9dc8eb0ee = L.circleMarker(
+                [33.3807162, -91.0491731],
+                {"bubblingMouseEvents": true, "color": "#FC4E2A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FC4E2A", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_bc6e894c07f94a3f81e78546edb3e394 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6fece47d15924b31c3f9010952442010 = $(`<div id="html_6fece47d15924b31c3f9010952442010" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 38701</b><br>     <b>Avg Mortality Rate: 6.80%</b><br>     <b>Rank: #1086</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> DELTA HEALTH SYSTEM - THE MEDICAL CENTER     </div>`)[0];
+                popup_bc6e894c07f94a3f81e78546edb3e394.setContent(html_6fece47d15924b31c3f9010952442010);
+            
+        
+
+        circle_marker_3fa3ad01295455aa95f92ee9dc8eb0ee.bindPopup(popup_bc6e894c07f94a3f81e78546edb3e394)
+        ;
+
+        
+    
+    
+            var circle_marker_f7a6889d5866f86206d98f2a6ef4de40 = L.circleMarker(
+                [33.5402354, -89.2739044],
+                {"bubblingMouseEvents": true, "color": "#FC4E2A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FC4E2A", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_8abb5a112a46d020983fb8202e75c6ca = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0b27be22433b41c789f8000be05a1a36 = $(`<div id="html_0b27be22433b41c789f8000be05a1a36" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 39744</b><br>     <b>Avg Mortality Rate: 6.80%</b><br>     <b>Rank: #1146</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> WEBSTER GENERAL HOSPITAL/ SWING BED     </div>`)[0];
+                popup_8abb5a112a46d020983fb8202e75c6ca.setContent(html_0b27be22433b41c789f8000be05a1a36);
+            
+        
+
+        circle_marker_f7a6889d5866f86206d98f2a6ef4de40.bindPopup(popup_8abb5a112a46d020983fb8202e75c6ca)
+        ;
+
+        
+    
+    
+            var circle_marker_818336582958c069b1cdeb1af5a479e3 = L.circleMarker(
+                [33.532005, 131.3496745],
+                {"bubblingMouseEvents": true, "color": "#FC4E2A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FC4E2A", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 11.0, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_f5f979214ce53c1040aea96c03e38997 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_af57eac37357c1da76a78603a2ac7181 = $(`<div id="html_af57eac37357c1da76a78603a2ac7181" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 612</b><br>     <b>Avg Mortality Rate: 6.70%</b><br>     <b>Rank: #2111</b><br>     Hospitals: 2<br>     <b>Hospitals:</b> HOSPITAL PAVIA ARECIBO, HOSPITAL METROPOLITANO  DR SUSONI     </div>`)[0];
+                popup_f5f979214ce53c1040aea96c03e38997.setContent(html_af57eac37357c1da76a78603a2ac7181);
+            
+        
+
+        circle_marker_818336582958c069b1cdeb1af5a479e3.bindPopup(popup_f5f979214ce53c1040aea96c03e38997)
+        ;
+
+        
+    
+    
+            var circle_marker_a246c186de67c04ba6ff942f60252694 = L.circleMarker(
+                [30.8183051, -85.6735305],
+                {"bubblingMouseEvents": true, "color": "#FC4E2A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FC4E2A", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_845eaa80aa4a0b34ea84ee6ea3db5542 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2ac231a156a3fe6d456df6751744d46e = $(`<div id="html_2ac231a156a3fe6d456df6751744d46e" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 32425</b><br>     <b>Avg Mortality Rate: 6.60%</b><br>     <b>Rank: #765</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> DOCTORS MEMORIAL HOSPITAL     </div>`)[0];
+                popup_845eaa80aa4a0b34ea84ee6ea3db5542.setContent(html_2ac231a156a3fe6d456df6751744d46e);
+            
+        
+
+        circle_marker_a246c186de67c04ba6ff942f60252694.bindPopup(popup_845eaa80aa4a0b34ea84ee6ea3db5542)
+        ;
+
+        
+    
+    
+            var circle_marker_36ad2648315084878c47329db2cf7f5f = L.circleMarker(
+                [37.3170613, -91.9586985],
+                {"bubblingMouseEvents": true, "color": "#FC4E2A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FC4E2A", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_26e82c7228e265ee209900b69f2bf1c7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_18df4d25ec0023109530b5a632fc1505 = $(`<div id="html_18df4d25ec0023109530b5a632fc1505" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 65483</b><br>     <b>Avg Mortality Rate: 6.60%</b><br>     <b>Rank: #2278</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> TEXAS COUNTY MEMORIAL HOSPITAL     </div>`)[0];
+                popup_26e82c7228e265ee209900b69f2bf1c7.setContent(html_18df4d25ec0023109530b5a632fc1505);
+            
+        
+
+        circle_marker_36ad2648315084878c47329db2cf7f5f.bindPopup(popup_26e82c7228e265ee209900b69f2bf1c7)
+        ;
+
+        
+    
+    
+            var circle_marker_c7e5c1325663afdce2da24f8abe845cb = L.circleMarker(
+                [37.1110254, -87.87985],
+                {"bubblingMouseEvents": true, "color": "#FED976", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FED976", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_7a1654bbe519a8524e974234d73ce550 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_459a5f8e84113bd6067695ba0767f4ae = $(`<div id="html_459a5f8e84113bd6067695ba0767f4ae" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 42445</b><br>     <b>Avg Mortality Rate: 6.50%</b><br>     <b>Rank: #1223</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> CALDWELL MEDICAL CENTER     </div>`)[0];
+                popup_7a1654bbe519a8524e974234d73ce550.setContent(html_459a5f8e84113bd6067695ba0767f4ae);
+            
+        
+
+        circle_marker_c7e5c1325663afdce2da24f8abe845cb.bindPopup(popup_7a1654bbe519a8524e974234d73ce550)
+        ;
+
+        
+    
+    
+            var circle_marker_bcf15572f5ea6a6fefb759af69f9e83c = L.circleMarker(
+                [33.532005, 131.3496745],
+                {"bubblingMouseEvents": true, "color": "#FED976", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FED976", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 11.0, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_7581333de3c6f6bd476dca262f74af63 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_219bff61414857a3e50b812e22221c20 = $(`<div id="html_219bff61414857a3e50b812e22221c20" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 725</b><br>     <b>Avg Mortality Rate: 6.45%</b><br>     <b>Rank: #2617</b><br>     Hospitals: 2<br>     <b>Hospitals:</b> HOSPITAL MENONITA CAGUAS INC, HOSPITAL PAVIA CAGUAS     </div>`)[0];
+                popup_7581333de3c6f6bd476dca262f74af63.setContent(html_219bff61414857a3e50b812e22221c20);
+            
+        
+
+        circle_marker_bcf15572f5ea6a6fefb759af69f9e83c.bindPopup(popup_7581333de3c6f6bd476dca262f74af63)
+        ;
+
+        
+    
+    
+            var circle_marker_fa1f97440406fb408c6677cfe50c0267 = L.circleMarker(
+                [31.9424398, -89.8374888],
+                {"bubblingMouseEvents": true, "color": "#FED976", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FED976", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.9, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_dead3621b614e55b4394d7e332d54038);
+        
+    
+        var popup_22bc994fd56c14021deb82cc59ef09b0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0e80f2ef195c8b3d4dbeeebdf4389940 = $(`<div id="html_0e80f2ef195c8b3d4dbeeebdf4389940" style="width: 100.0%; height: 100.0%;">     <b>ZIP Code: 39114</b><br>     <b>Avg Mortality Rate: 6.40%</b><br>     <b>Rank: #1111</b><br>     Hospitals: 1<br>     <b>Hospitals:</b> SIMPSON GENERAL HOSPITAL CAH     </div>`)[0];
+                popup_22bc994fd56c14021deb82cc59ef09b0.setContent(html_0e80f2ef195c8b3d4dbeeebdf4389940);
+            
+        
+
+        circle_marker_fa1f97440406fb408c6677cfe50c0267.bindPopup(popup_22bc994fd56c14021deb82cc59ef09b0)
+        ;
+
+        
+    
+</script>
+</html>
