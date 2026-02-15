@@ -328,8 +328,8 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#map">Interactive Map</a></li>
+            <li><a href="#map">Mortality Map</a></li>
+            <li><a href="#counties">Top Counties</a></li>
             <li><a href="#findings">Key Findings</a></li>
             <li><a href="#analysis">Analysis</a></li>
         </ul>
@@ -337,9 +337,28 @@
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Map Section -->
+        <section id="map">
+            <h2>Public Hospitals in the US Mapped by Mortality Rate</h2>
+            <p>
+                Explore the geographic distribution of hospital mortality rates across America's regions within each state.
+                This interactive choropleth map reveals the granular patterns of healthcare performance, showing which specific
+                regions within Bible Belt states face the greatest challenges.
+            </p>
+            <p>
+                The color gradient ranges from <span class="highlight">yellow (lower mortality)</span> to
+                <span class="highlight">red (higher mortality)</span>. Notice the concentration of red in the South,
+                particularly within Mississippi, Louisiana, Alabama, and Arkansas.
+            </p>
+            <div class="map-container">
+                <iframe src="hospital_mortality_state_regions_map.html"></iframe>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
         <!-- Overview Section -->
         <section id="overview">
-            <h2>Overview</h2>
             <p>
                 Hospital mortality is often discussed as a reflection of medical care. It is defined by the expertise of physicians, the quality of facilities, or the severity of a patient's illness. But when mortality rates are mapped, clear regional patterns emerge. The highest-mortality communities are not randomly distributed across the country, they are concentrated in one part of it.
             </p>
@@ -367,26 +386,6 @@
             <p>
                 Hospital mortality is often described as a medical outcome. But at a national scale, it is clear that it is also a geographic one.
             </p>
-        </section>
-
-        <div class="divider"></div>
-
-        <!-- Map Section -->
-        <section id="map">
-            <h2>Regional Mortality Map</h2>
-            <p>
-                Explore the geographic distribution of hospital mortality rates across America's regions within each state.
-                This interactive choropleth map reveals the granular patterns of healthcare performance, showing which specific
-                regions within Bible Belt states face the greatest challenges.
-            </p>
-            <p>
-                The color gradient ranges from <span class="highlight">yellow (lower mortality)</span> to
-                <span class="highlight">red (higher mortality)</span>. Notice the concentration of red in the South,
-                particularly within Mississippi, Louisiana, Alabama, and Arkansas.
-            </p>
-            <div class="map-container">
-                <iframe src="hospital_mortality_state_regions_map.html"></iframe>
-            </div>
         </section>
 
         <div class="divider"></div>
